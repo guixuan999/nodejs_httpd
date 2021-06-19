@@ -22,7 +22,7 @@ Server has started.
 API
     GET http://localhost:9009
     GET http://localhost:9009/api/hi?firstname=XX&lastname=YY
-    GET http://localhost:8888/api/classmates/all?gender=male  (or female)
+    GET http://localhost:9009/api/classmates/all?gender=male  (or female)
 
 静态文件
     将静态文件，如html/css/js/jpg..., 放入 static/path/to/file
