@@ -41,7 +41,7 @@ function getclassmates(query, request, response) {
 
     var queryObj = querystring.parse(query);
     var gender = "gender" in queryObj ? queryObj["gender"] : null;
-    fs.readFile("./data/classmates.json", "utf-8", function(error, file) {
+    fs.readFile(__dirname + "/data/classmates.json", "utf-8", function(error, file) {
         if(error) {
           response.writeHead(500, {"Content-Type": "text/plain"});
           response.write(error + "\n");
