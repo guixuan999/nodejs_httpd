@@ -3,7 +3,6 @@ var handle_static = require("./requestHandlers").handle_static;
 function route(pathname, query, handle, request, response) {
     console.log("route for " + pathname);
     if (! (pathname in handle)) {
-        console.log("static");
         handle_static(pathname, request, response);
     } else if (typeof handle[pathname] === 'function') {
         handle[pathname](query, request, response);
