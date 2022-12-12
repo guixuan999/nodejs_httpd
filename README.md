@@ -31,3 +31,13 @@ API
     GET http://localhost:9009/path/to/file
     
 ```
+
+## OneNet IoT API example
+$ node index.js &
+
+启动OneNet IoT API代理后端
+$ python main.py    (python 版本)
+或
+$  ./onenet_dp      (golang 版本)
+
+浏览器打开 http://<HOST>/dp.html, 点击按钮可取datapoints一次
