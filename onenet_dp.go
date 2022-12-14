@@ -19,7 +19,7 @@ func main() {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("GET %v\n", r.RequestURI)
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		if req, err := http.NewRequest("GET", fmt.Sprintf("http://api.heclouds.com%v", r.RequestURI) /*"http://api.heclouds.com/devices/1014870046/datapoints?datastream_id=illuminance,acceleration&limit=2"*/, nil); err == nil {
+		if req, err := http.NewRequest("GET", fmt.Sprintf("http://api.heclouds.com%v", r.RequestURI), nil); err == nil {
 			req.Header.Add("Authorization", onenet_token("556381", "LTcFERO6j+yhvcNnmg0jUUrRIuhtdi8XKTerm2wy7Ww="))
 			client := http.Client{}
 			if resp, err := client.Do(req); err == nil {

@@ -3,7 +3,7 @@ window.onload = function(){
 }
 
 function btn_clicked() {
-	var url = 'http://' + window.location.host + ":9009/devices/1014870046/datapoints?datastream_id=illuminance,acceleration&start=2022-12-09T15:29:55"
+	var url = 'http://' + window.location.host + ":9009/devices/" + document.getElementById("device_id").value.trim() + "/datapoints?datastream_id=temperature,illuminance,acceleration"
 	axios({
 	  method: 'get',
 	  url: url,
