@@ -36,7 +36,7 @@ func main() {
 	}
 
 	if err := server.ListenAndServe(); err != nil {
-		fmt.Print("%v", err)
+		fmt.Printf("%v", err)
 	}
 }
 
