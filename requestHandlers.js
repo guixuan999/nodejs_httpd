@@ -92,6 +92,7 @@ function handle_static(pathname, request, response) {
                 break;
               case ".jpg":
               case ".jpeg":
+	      case ".png":
                 response.writeHead(200, {"Content-Type": "image/jpg"});
                 break;
               default:
