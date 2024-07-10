@@ -96,7 +96,7 @@ function handle_static(pathname, request, response) {
                 response.writeHead(200, {"Content-Type": "image/jpg"});
                 break;
               default:
-                response.writeHead(200, {"Content-Type": "application/octet-stream"});
+                response.writeHead(200, {"Content-Type": "application/octet-stream", "Content-Length": file.length});
               }
               response.write(file, "binary");
               response.end();
