@@ -40,11 +40,17 @@ API
 ```
 
 ## OneNet IoT API example
+
+```language
 $ node index.js &
+```
 
 启动OneNet IoT API代理后端
-$ python main.py    (python 版本)
+```language
+$ python main.py
+```
 或
+```language
 $  ./onenet_dp      (golang 版本)
-
+```
 浏览器打开 http://<HOST>/dp.html, 点击按钮可取datapoints一次
