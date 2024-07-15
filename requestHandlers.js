@@ -20,7 +20,23 @@ function welcome(query, request, response) {
     if(!check_method(request, response))
         return;
 
-    const clientIp = request.headers['x-forwarded-for'] || request.socket.remoteAddress;
+    // 获取客户端的 IP 地址
+    let clientIp;
+
+    // 检查 'x-forwarded-for' 头是否存在
+    if (request.headers['x-forwarded-for']) {
+        clientIp = request.headers['x-forwarded-for'].split(',')[0].trim();
+    } else if (request.socket && request.socket.remoteAddress) {
+        // 检查 req.socket.remoteAddress 是否存在
+        clientIp = request.socket.remoteAddress;
+    } else {
+        // 如果两者都不存在，设为 undefined
+        clientIp = 'undefined';
+    }
+    // 处理 IPv4-mapped IPv6 地址
+    if (clientIp.startsWith('::ffff:')) {
+        clientIp = clientIp.split(':').pop();
+    }
     const pythonProcess = spawn('python', ['ip2geo.py', clientIp]);
     pythonProcess.stdout.on('data', (data) => {
         response.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
