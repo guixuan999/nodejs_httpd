@@ -11,7 +11,9 @@
 
 ## 安装python包
 
+```language
 $ pip install geoip2
+```
 (这个是为了查找http客户端的地理位置)
 
 ## 启动Server
