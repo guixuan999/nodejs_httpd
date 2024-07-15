@@ -2,6 +2,8 @@
 var querystring = require("querystring");
 var fs = require("fs");
 var path = require("path");
+const { spawn } = require("child_process");
+
 
 function check_method(request, response) {
     if(request.method != "GET") {
@@ -18,9 +20,26 @@ function welcome(query, request, response) {
     if(!check_method(request, response))
         return;
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("Welcome to world of Nodejs!");
-    response.end();
+    const clientIp = request.headers['x-forwarded-for'] || request.socket.remoteAddress;
+    const pythonProcess = spawn('python', ['ip2geo.py', clientIp]);
+    pythonProcess.stdout.on('data', (data) => {
+        response.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
+        response.write("<pre>Welcome to world of Nodejs!<br></pre>");
+        response.write("<pre>You are from: <br>");
+        response.write(clientIp);
+	response.write("<br>");
+	response.write(data);
+        response.write("</pre");
+        response.end();
+    });
+    pythonProcess.stderr.on('data', (data) => {
+        console.error(`Standard Error: ${data}`);
+    });
+
+    pythonProcess.on('close', (code) => {
+        // console.log(`Child process exited with code ${code}`);
+        // 在这里可以执行子进程退出后的操作
+    });
 }
 
 function sayhi(query, request, response) {

@@ -9,6 +9,11 @@
 
 下载地址：https://nodejs.org/en/download/
 
+## 安装python包
+
+$ pip install geoip2
+(这个是为了查找http客户端的地理位置)
+
 ## 启动Server
 
 ```language
