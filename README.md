@@ -51,6 +51,6 @@ $ python main.py
 ```
 或
 ```language
-$  ./onenet_dp      (golang 版本)
+$  ./onenet_dp
 ```
 浏览器打开 http://<HOST>/dp.html, 点击按钮可取datapoints一次
